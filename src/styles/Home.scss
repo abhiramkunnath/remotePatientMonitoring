@@ -1,0 +1,183 @@
+// HomePage.scss
+$primary-color: #d0eb12;
+$secondary-color: #f9f9f9;
+$text-color: #333;
+
+.reactlink{
+  text-decoration: none;
+  color: unset;
+}
+
+.homepage {
+  background-color: $secondary-color;
+  color: $text-color;
+  font-family: "Poppins";
+  padding: 20px;
+  height: 100dvh;
+  width: 1400px;
+  margin: auto;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 5rem;
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar {
+      a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: $text-color;
+        font-weight: bold;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+
+    h1 {
+      font-size: 6.5rem;
+      font-weight: 200;
+      line-height: 8rem;
+      margin-bottom: 2rem;
+      span {
+        font-weight: bold;
+      }
+    }
+
+    &-left {
+      flex: 60%;
+    }
+    &-right {
+      flex: 40%;
+    }
+
+    .buttons {
+      margin: 20px 0;
+      margin-bottom: 4rem;
+
+      button {
+        margin: 0 10px;
+        padding: 1.5rem 3rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        color: $text-color;
+        font-size: 1rem;
+
+        &.learn-more {
+          background-color: $primary-color;
+        }
+
+        &.view-team {
+          background-color: transparent;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .patient-options {
+      display: flex;
+      margin: 20px 0;
+
+      .doctorOp {
+        background-image: url("../assets/doctorbtn.png");
+      }
+      .patientOp {
+        background-image: url("../assets/patientbtn.png");
+      }
+
+      .option {
+        background-color: #f0f1f5;
+        border-radius: 40px;
+        padding: 20px;
+        padding-right: 0;
+        margin: 0 10px;
+        height: 200px;
+        width: 300px;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-position: right bottom;
+
+        &-left {
+          width: 180px;
+        }
+
+        h2 {
+          font-size: 14px;
+        }
+
+        p {
+          font-size: 12px;
+          color: #848484;
+        }
+
+        .arrow-button {
+          background: $text-color;
+          color: white;
+          text-align: center;
+          line-height: 50px;
+          height: 50px;
+          width: 50px;
+          border-radius: 100%;
+          margin-top: 3.4rem;
+          border: none;
+          font-size: 20px;
+          font-weight: bolder;
+          transform: rotate(-40deg);
+        }
+      }
+    }
+
+    &-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .video-section {
+      position: relative;
+
+      .video-img {
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .watch-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background-color: $primary-color;
+        color: $text-color;
+        font-weight: bolder;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 15%;
+        cursor: pointer;
+      }
+    }
+
+    .description {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  }
+}
