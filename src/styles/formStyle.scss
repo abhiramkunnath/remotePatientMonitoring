@@ -23,8 +23,8 @@ body {
 // Authentication Container (Split Layout)
 .auth-container {
   display: flex;
-  width: 100%;
-  max-width: 900px;
+  width: 1400px;
+  height: 80vh;
   background: white;
   border-radius: 8px;
   overflow: hidden;
@@ -62,9 +62,13 @@ body {
     form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: .6rem;
       width: 100%;
       max-width: 300px;
+
+      label{
+        margin-bottom: -10px;
+      }
 
       input,
       select {
@@ -102,6 +106,7 @@ body {
 @media (max-width: 768px) {
   .auth-container {
     flex-direction: column;
+    width: 100%;
 
     .auth-image {
       height: 200px;

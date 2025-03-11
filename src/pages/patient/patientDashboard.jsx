@@ -3,11 +3,14 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import "../../styles/patientDashboardStyle.scss";
+import { useNavigate } from "react-router-dom";
 
 const PatientDashboard = () => {
   const [patientInfo, setPatientInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPatientData = async (user) => {
@@ -41,11 +44,11 @@ const PatientDashboard = () => {
   }, [auth, db]);
 
   const handleDiagnose = () => {
-    alert("AI Diagnosis feature coming soon...");
+    alert("Opening diagnosis...");
   };
 
   const handleChatbot = () => {
-    alert("Opening chatbot assistant...");
+    navigate("/chatbot");
   };
 
   const handleCall = () => {

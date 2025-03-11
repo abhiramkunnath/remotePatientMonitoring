@@ -3,7 +3,7 @@ import { auth, db } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import "../styles/formStyle.scss"
+import "../styles/formStyle.scss";
 
 import loginImage from "../assets/login-image.jpg";
 
@@ -18,11 +18,19 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        navigate(userData.role === "doctor" ? "/doctor-dashboard" : "/patient-dashboard");
+        navigate(
+          userData.role === "doctor"
+            ? "/doctor-dashboard"
+            : "/patient-dashboard"
+        );
       } else {
         setError("User data not found.");
       }
@@ -38,12 +46,28 @@ const Login = () => {
       </div>
       <div className="auth-form">
         <h2>Login</h2>
-        {error && <p className="error">{error}</p>}
         <form onSubmit={handleLogin}>
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
           <button type="submit">Login</button>
         </form>
+        {error && <p className="error">{error}</p>}
       </div>
     </div>
   );

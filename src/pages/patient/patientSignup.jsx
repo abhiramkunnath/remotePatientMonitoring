@@ -47,12 +47,18 @@ const PatientSignup = () => {
         <h2>Patient Signup</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleRegister}>
-          <input type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} required />
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} required />
-          <input type="text" placeholder="Medical Conditions (if any)" value={conditions} onChange={(e) => setConditions(e.target.value)} />
-          <input type="text" placeholder="Caretaker Name (Optional)" value={caretaker} onChange={(e) => setCaretaker(e.target.value)} />
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} required />
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <label htmlFor="password">password</label>
+          <input type="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <label htmlFor="age">Age</label>
+          <input type="number" id="age" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} required />
+          <label htmlFor="medcondition">Medical Conditions (if any)</label>
+          <input type="text" id="medcondition" placeholder="Medical Conditions (if any)" value={conditions} onChange={(e) => setConditions(e.target.value)} />
+          <label htmlFor="cname">Caretaker Name (Optional)</label>
+          <input type="text" id="cname" placeholder="Caretaker Name (Optional)" value={caretaker} onChange={(e) => setCaretaker(e.target.value)} />
           <button type="submit">Sign Up</button>
         </form>
       </div>
