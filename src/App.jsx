@@ -7,6 +7,7 @@ import DoctorSignup from "./pages/doctor/doctorSignup";
 import PatientSignup from "./pages/patient/patientSignup";
 import PatientDashboard from "./pages/patient/patientDashboard";
 import Chatbot from "./pages/chatbot";
+import DoctorDashboard from "./pages/doctor/doctorDashboard";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register/doctor" element={<DoctorSignup />} />
           <Route path="/register/patient" element={<PatientSignup />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
+          <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
           <Route path="/chatbot" element={<Chatbot />} />
         </Routes>
     </>

@@ -1,0 +1,33 @@
+@import "./Home.scss"; // Ensure theme variables are included
+
+.doctor-dashboard {
+  padding: 20px;
+  background-color: $secondary-color;
+  color: $text-color;
+
+  h2 {
+    color: $primary-color;
+    text-align: center;
+  }
+
+  .patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: $primary-color;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: $secondary-color;
+    }
+  }
+}
