@@ -1,0 +1,91 @@
+$primary-color: #d0eb12;
+$secondary-color: #f9f9f9;
+$text-color: #333;
+
+.patient-details {
+  padding: 20px;
+  background-color: $secondary-color;
+  color: $text-color;
+
+  h2 {
+    color: $primary-color;
+    text-align: center;
+  }
+
+  .patient-info {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .video-chat-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  .patient-reports {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      color: $primary-color;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      li:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .add-report {
+    margin-top: 20px;
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      display: block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
