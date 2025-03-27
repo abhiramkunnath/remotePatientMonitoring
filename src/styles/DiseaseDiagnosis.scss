@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+:root {
+    --primary-color: #3f7fff;
+    --background-light: #f4f6f9;
+    --text-primary: #2c3e50;
+    --text-secondary: #6c757d;
+    --accent-color: #5a6aff;
+    --border-radius: 12px;
+}
+
+.disease-diagnosis-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--background-light);
+    height: 100%;
+}
+
+.app-name {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    h1 {
+        font-size: 2.5rem;
+        color: var(--text-primary);
+        font-weight: 700;
+        letter-spacing: -0.05em;
+    }
+}
+
+.diagnosis-input-container {
+    width: 100%;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 150px;
+        border: 1px solid #e0e0e0;
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        resize: vertical;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+
+    &:hover {
+        background-color: var(--accent-color);
+    }
+
+    &:disabled {
+        background-color: #a0b8e0;
+        cursor: not-allowed;
+    }
+}
+
+.diagnosis-report {
+    width: 100%;
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+
+    h2 {
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+
+    .report-content {
+        line-height: 1.6;
+        color: var(--text-secondary);
+    }
+
+    .report-disclaimer {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: rgba(255, 0, 0, 0.05);
+        border-left: 4px solid red;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .disease-diagnosis-container {
+        padding: 1rem;
+    }
+
+    .diagnosis-input-container,
+    .diagnosis-report {
+        width: 100%;
+        padding: 1rem;
+    }
+}

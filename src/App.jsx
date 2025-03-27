@@ -6,9 +6,10 @@ import Home from "./pages/Home";
 import DoctorSignup from "./pages/doctor/doctorSignup";
 import PatientSignup from "./pages/patient/patientSignup";
 import PatientDashboard from "./pages/patient/patientDashboard";
-import Chatbot from "./pages/chatbot";
+import Chatbot from "./pages/Chatbot";
 import DoctorDashboard from "./pages/doctor/doctorDashboard";
 import PatientDetails from "./pages/doctor/patientDetails";
+import DiseaseDiagnosis from "./pages/Diagnosis";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
           <Route path="/patientDetails/:patientId" element={<PatientDetails />} />
           <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/diagnose" element={<DiseaseDiagnosis />} />
         </Routes>
     </>
   );

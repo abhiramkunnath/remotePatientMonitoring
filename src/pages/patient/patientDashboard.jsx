@@ -44,7 +44,7 @@ const PatientDashboard = () => {
   }, [auth, db]);
 
   const handleDiagnose = () => {
-    alert("Opening diagnosis...");
+    navigate("/diagnose");
   };
 
   const handleChatbot = () => {

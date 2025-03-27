@@ -2,113 +2,180 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 14;
-  font-family: "Montserrat", sans-serif, system-ui;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+:root {
+  --primary-color: #3f7fff;
+  --background-light: #f4f6f9;
+  --text-primary: #2c3e50;
+  --text-secondary: #6c757d;
+  --accent-color: #5a6aff;
+  --border-radius: 12px;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 2rem;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--background-light);
+  padding: 2rem;
   align-items: center;
-  line-height: 2;
+  justify-content: center;
 }
 
 .app-name {
-  font-weight: 600;
-  display: flex;
-}
-
-.app-name div {
-  background: rgba(0, 0, 0, 0.1);
-  padding: 0 1rem;
-  border-radius: 1rem;
-}
-
-.app-name span {
-  font-family: cursive;
-  font-style: italic;
-  font-size: 1.5rem;
-}
-
-h1 {
-  font-size: 5rem;
-}
-
-h3 {
-  font-size: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
-}
 
-button {
-  border-radius: 30%;
-  border: none;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-}
+  h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
 
-button:hover {
-  opacity: 0.9;
-}
+  div {
+    background: rgba(63, 127, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    display: inline-block;
+  }
 
-.search-input {
-  resize: none;
-  flex: 1;
-  background: transparent;
-  outline: none;
-  height: 20rem;
-  padding: 0.5rem 0.5rem 0.5rem 2rem;
-  font-size: inherit;
-}
-
-.searchBar-container {
-  align-self: flex-end;
-  width: 90%;
-}
-
-.searchBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  padding: 1rem;
-}
-
-.searchBar button {
-  background-color: rgb(63, 128, 226);
-  color: white;
-  flex: 0;
-  height: 2.5em;
-  padding: 0 2em;
-}
-
-.searchBar button:disabled {
-  background-color: rgb(162, 192, 238);
+  span {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
 }
 
 .chat-container {
-  width: 50%;
-  margin-top: 3em;
+  width: 100%;
+  max-width: 700px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 1rem;
 }
 
-.chatConversations {
+.chat {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+  }
 }
 
-.chat-prompt {
-  align-self: flex-end;
-  margin: 1rem 0;
-  font-weight: 600;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 0.5rem;
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .chat-prompt {
+    align-self: flex-end;
+    background-color: rgba(63, 127, 255, 0.1);
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    max-width: 80%;
+    word-wrap: break-word;
+    font-weight: 500;
+  }
+
+  .chat-response {
+    align-self: flex-start;
+    background-color: #f1f5f9;
+    color: var(--text-secondary);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    max-width: 80%;
+    word-wrap: break-word;
+    line-height: 1.6;
+  }
 }
 
-.chat-container button {
-  background-color: rgb(205, 56, 56);
+.searchBar-container {
+  width: 100%;
+  max-width: 700px;
+}
+
+.searchbar {
+  display: flex;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  resize: none;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: white;
+  color: var(--text-primary);
+  outline: none;
+  height: 150px;
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+}
+
+button {
+  background-color: var(--primary-color);
   color: white;
-  padding: 0.5em 1.5em;
-  margin: 2rem 0;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: stretch !important;
+
+  &:hover {
+    background-color: var(--accent-color);
+  }
+
+  &:disabled {
+    background-color: #a0b8e0;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .chat-container,
+  .searchBar-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .searchbar {
+    flex-direction: column;
+  }
+
+  .search-input {
+    height: 100px;
+  }
+
+  button {
+    width: 100%;
+  }
 }

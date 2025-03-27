@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Groq from "groq-sdk";
 
 import "../styles/Chatbot.scss";
-import { useEffect } from "react";
 
 const groq = new Groq({
   apiKey: import.meta.env.VITE_REACT_APP_GROQ_API_KEY,
@@ -11,21 +10,21 @@ const groq = new Groq({
 
 function Chatbot() {
   const [inputValue, setInputValue] = useState("");
-  const [chatMessages, setChatMessages] = useState([]);
-
-  useEffect(() => {
-    handleSend();
-  }, []);
+  const [chatMessages, setChatMessages] = useState([
+    {
+      prompt: "AI Assistant",
+      response: "How can I help you regarding your health and lifestyle today?"
+    }
+  ]);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const handleSend = async () => {
+    // Prevent sending empty messages
     if (inputValue.trim() === "") {
-      setInputValue(
-        "Help me with health related suggestions, providing lifestyle feedbacks"
-      );
+      return;
     }
 
     const chatPrompt = `You: ${inputValue}`;
@@ -33,6 +32,10 @@ function Chatbot() {
     try {
       const chatCompletion = await groq.chat.completions.create({
         messages: [
+          {
+            role: "system",
+            content: "You are a professional lifestyle doctor and nutritionist. provide evidence-based, and personalized health advice. Respond as if you're conducting a professional medical consultation, offering practical, actionable recommendations while maintaining a supportive tone. Keep responses very concise"
+          },
           {
             role: "user",
             content: inputValue,
@@ -52,7 +55,7 @@ function Chatbot() {
       setChatMessages([...chatMessages, newChatMessage]);
     } catch (error) {
       console.error("Error fetching chat completion:", error);
-      const errorMessage = "Error fetching chat completion";
+      const errorMessage = "I apologize, but there was an error processing your request. Could you please try again?";
       const newChatMessage = {
         prompt: chatPrompt,
         response: errorMessage,
@@ -72,6 +75,9 @@ function Chatbot() {
 
   return (
     <>
+      <div className="app-name">
+        <h1>Lifestyle Chatbot</h1>
+      </div>
       <div className="chat-container">
         <div className="chat">
           {chatMessages.map((message, index) => (
@@ -86,12 +92,17 @@ function Chatbot() {
         <div className="searchbar">
           <textarea
             className="search-input"
-            placeholder="Enter your text"
+            placeholder="Enter your health and lifestyle query"
             value={inputValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />
-          <button onClick={handleSend}>Send</button>
+          <button 
+            onClick={handleSend}
+            disabled={inputValue.trim() === ""}
+          >
+            Send
+          </button>
         </div>
       </div>
     </>
