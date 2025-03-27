@@ -6,10 +6,11 @@ import Home from "./pages/Home";
 import DoctorSignup from "./pages/doctor/doctorSignup";
 import PatientSignup from "./pages/patient/patientSignup";
 import PatientDashboard from "./pages/patient/patientDashboard";
-import Chatbot from "./pages/Chatbot";
+import Chatbot from "./pages/AiChatbot";
 import DoctorDashboard from "./pages/doctor/doctorDashboard";
 import PatientDetails from "./pages/doctor/patientDetails";
 import DiseaseDiagnosis from "./pages/Diagnosis";
+import VideoChat from "./pages/videoChat";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/patientDetails/:patientId" element={<PatientDetails />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/diagnose" element={<DiseaseDiagnosis />} />
+          <Route path="/videochat/:name" element={<VideoChat />} />
         </Routes>
     </>
   );

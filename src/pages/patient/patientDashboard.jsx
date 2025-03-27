@@ -9,6 +9,7 @@ const PatientDashboard = () => {
   const [patientInfo, setPatientInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [userID, setUserID] = useState("")
 
   const navigate = useNavigate();
 
@@ -23,6 +24,7 @@ const PatientDashboard = () => {
       try {
         const userDocRef = doc(db, "users", user.uid);
         const userDocSnap = await getDoc(userDocRef);
+        setUserID(user.uid);
 
         if (userDocSnap.exists()) {
           setPatientInfo(userDocSnap.data());
@@ -52,7 +54,7 @@ const PatientDashboard = () => {
   };
 
   const handleCall = () => {
-    alert("Initiating call...");
+    navigate(`/videochat/${patientInfo.name.replace(/\s/g, "")}`);
   };
 
   return (

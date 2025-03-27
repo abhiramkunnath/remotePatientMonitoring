@@ -2,24 +2,32 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getFirestore, doc, getDoc, collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import "../../styles/PatientDetails.scss";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../firebase";
 
 const PatientDetails = () => {
   const { patientId } = useParams();
   const [patient, setPatient] = useState(null);
+  const [doctor, setDoctor] = useState(null);
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newReport, setNewReport] = useState("");
 
-  const db = getFirestore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPatientDetails = async () => {
       try {
         const patientRef = doc(db, "users", patientId);
         const patientSnap = await getDoc(patientRef);
+        const doctorRef = doc(db, "users", auth.currentUser.uid);
+        const doctorSnap = await getDoc(doctorRef);
 
         if (patientSnap.exists()) {
           setPatient({ id: patientSnap.id, ...patientSnap.data() });
+        }
+        if (doctorSnap.exists()) {
+          setDoctor({ id: doctorSnap.id, ...doctorSnap.data() });
         }
 
         const q = query(collection(db, "reports"), where("patientId", "==", patientId));
@@ -55,8 +63,7 @@ const PatientDetails = () => {
   };
 
   const handleStartVideoChat = () => {
-    alert("Starting video chat...");
-    // Implement video chat logic here
+    navigate(`/videochat/${doctor.name.replace(/\s/g, "")}`);
   };
 
   return (
