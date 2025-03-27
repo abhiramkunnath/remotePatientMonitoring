@@ -12,7 +12,7 @@ import {
 import '@stream-io/video-react-sdk/dist/css/styles.css';
 import "../styles/videochat.scss";
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const apiKey = 'mmhfdzb5evj2';
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3Byb250by5nZXRzdHJlYW0uaW8iLCJzdWIiOiJ1c2VyL01pc3Npb25fVmFvIiwidXNlcl9pZCI6Ik1pc3Npb25fVmFvIiwidmFsaWRpdHlfaW5fc2Vjb25kcyI6NjA0ODAwLCJpYXQiOjE3NDMxMDg2NDEsImV4cCI6MTc0MzcxMzQ0MX0.MrofZUB-x_Rcg_RnadsfsAsfl-BXhWazIeZdugappC8';
@@ -43,6 +43,8 @@ export default function VideoChat() {
 }
 
 export const MyUILayout = () => {
+  const navigate = useNavigate();
+
   const { useCallCallingState } = useCallStateHooks();
   const callingState = useCallCallingState();
 
@@ -53,7 +55,9 @@ export const MyUILayout = () => {
   return (
     <StreamTheme>
       <SpeakerLayout participantsBarPosition='bottom' />
-      <CallControls />
+      <CallControls onLeave={() => {
+        navigate(-1)
+      }} />
     </StreamTheme>
   );
 };
